@@ -1,0 +1,30 @@
+volumes:
+  db_data:
+
+networks:
+  pieno_net:
+
+services:    
+  my_sql: 
+    image: "mysql:8.3.0"
+    environment:
+      - MYSQL_USER=fre
+      - MYSQL_PASSWORD=password
+      - MYSQL_DATABASE=pieno
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - pieno_net
+  
+  api_flask:
+    image: api_flask 
+    environment:
+      - MYSQL_USER=fre
+      - MYSQL_PASSWORD=password
+      - MYSQL_DATABASE=pieno
+    networks:
+      - pieno_net
+    ports:
+      - "8080:8080"
+    
