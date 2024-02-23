@@ -9,13 +9,15 @@ This component is part of an IoT project that enables the prediction of growth/d
 
 - **Table Predizioni:** Use this container to create 'predizioni' table on mySQL database.
 
-- **API Containers:** These containers facilitate the retrieval of data from external sources, ensuring up-to-date information for accurate predictions.
+- **API Prezzi & Predizioni Containers:** These containers facilitate the retrieval of data from external sources, ensuring up-to-date information for accurate predictions.
 
 - **MySQL Database:** A database is set up to store daily data acquired from government websites. This ensures a historical record of fuel prices for analysis and reporting purposes.
 
 - **Table Distributori Modena:** Utilize this container to create 'distributori' table on mySQL database.
 
 - **Push Data Container:** Use this container to populate tabe 'distributori' with daily list of Modena distributor (that contain fuel price in the specific distirbutor).
+
+-- **API Distributori Containers:** These containers facilitate the retrieval of data from external sources, ensuring up-to-date information for all distributors into Modena and province.
 
 ## Usage
 
@@ -26,7 +28,7 @@ This component is part of an IoT project that enables the prediction of growth/d
 2. **Table Predizioni Container:** 
     - run ./table_preds.sh into 'table_predictions' folder to create 'predizioni' table on database.
 
-3. **API Containers:**
+3. **API Prezzi & Predizioni Containers:**
    - run ./api.sh into flask_mysql_api in order to create docker image for api getting requests.
 
 4. **MySQL Database:**
@@ -39,3 +41,5 @@ This component is part of an IoT project that enables the prediction of growth/d
 6. **Push Data Container:**
    - run ./insert_distributor.sh into 'push_distributors_db' folder in order to push data into mySQL table 'distributori' (created with point 5.); run this insertion every day (because data have daily price for specific distributor). 
 
+7. **API Distributori Modena:**
+   - run ./api_distributori.sh into 'api_distributori' folder to create container for distributori API. Next add into the compose.yaml the 'api_distributori' service and go to /api_distributori/get_distributori to obtain all distributors list with relative informations. 
