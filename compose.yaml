@@ -27,4 +27,14 @@ services:
       - pieno_net
     ports:
       - "8080:8080"
-    
+  
+  api_distributori:
+    image: api_distributori
+    environment:
+      - MYSQL_USER=fre
+      - MYSQL_PASSWORD=password
+      - MYSQL_DATABASE=pieno
+    networks:
+      - pieno_net
+    ports:
+      - "8081:8080"
