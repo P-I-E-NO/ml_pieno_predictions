@@ -38,3 +38,16 @@ services:
       - pieno_net
     ports:
       - "8081:8080"
+
+  api_top_distributors: 
+    image: api_top_distributors
+    environment:
+      - MYSQL_USER=fre
+      - MYSQL_PASSWORD=password
+      - MYSQL_DATABASE=pieno
+    networks:
+      - pieno_net
+    ports:
+      - "8082:8080"
+    
+    
