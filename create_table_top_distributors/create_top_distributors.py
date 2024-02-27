@@ -14,7 +14,8 @@ if __name__ == '__main__':
                 cursor.execute("""
                                CREATE TABLE top_distributori(
                                 id int not null primary key,
-                                data DATE not null
+                                data DATE not null,
+                                PRIMARY KEY (id, data)
                                )
                                """)
                                

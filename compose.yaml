@@ -50,4 +50,26 @@ services:
     ports:
       - "8082:8080"
     
-    
+  api_request:
+    image: api_obtain_data
+    environment:
+      - MYSQL_USER=fre
+      - MYSQL_PASSWORD=password
+      - MYSQL_DATABASE=pieno
+      - OSRM_SERVER=http://osrm:5000/route/v1/driving
+    networks:
+      - pieno_net
+    ports:
+      - "8083:8080"
+
+  osrm:
+    image: ghcr.io/project-osrm/osrm-backend:latest
+    volumes:
+      - ./OSRM:/data
+    ports:
+      - "5001:5000"
+    networks:
+      - pieno_net
+    command: osrm-routed --algorithm mld /data/nord-est-latest.osrm
+
+  
