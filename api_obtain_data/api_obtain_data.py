@@ -141,12 +141,14 @@ def get_data():
     final_score = compute_cost(res, tank, consumption_per_km)
     print(final_score)
     final_score = dict(sorted(final_score.items(), key=lambda item: item[1]))
-    min_elem = min(final_score.items(), key=lambda item: item[1])
+    min_key, min_value = min(final_score.items(), key=lambda item: item[1])
     #print(min_elem)
     save_data(final_score)
+    for d in distributori_modena: 
+        if int(d['id']) == int(min_key):
+            return jsonify(d)
     #print(final_score[0])
-    
-    return jsonify(min_elem)
+    #return jsonify(min_elem)
 
 app.run(host='0.0.0.0', port=8080, debug=True)
 
